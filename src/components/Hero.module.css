@@ -1,0 +1,425 @@
+.hero {
+  padding: 120px 0 80px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(0, 166, 81, 0.03) 0%, rgba(52, 199, 89, 0.03) 100%);
+  z-index: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+}
+
+.title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.2;
+  margin-bottom: 24px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.highlight {
+  color: #00A651;
+  position: relative;
+  display: inline-block;
+}
+
+.highlight::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30%;
+  background: rgba(0, 166, 81, 0.1);
+  z-index: -1;
+  transform: skewX(-15deg);
+}
+
+.gradientText {
+  background: linear-gradient(135deg, #00A651 0%, #34C759 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.description {
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 32px;
+  max-width: 540px;
+  font-weight: 400;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 48px;
+}
+
+.primaryButton {
+  background: linear-gradient(135deg, #00A651 0%, #34C759 100%);
+  color: white;
+  padding: clamp(14px, 2vw, 18px) clamp(28px, 3vw, 36px);
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  cursor: pointer;
+  transition: all 0.4s ease;
+  white-space: nowrap;
+  box-shadow: 0 10px 25px rgba(0, 166, 81, 0.2);
+}
+
+.primaryButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(0, 166, 81, 0.3);
+}
+
+.secondaryButton {
+  background: rgba(255, 255, 255, 0.8);
+  color: #333;
+  padding: clamp(14px, 2vw, 18px) clamp(28px, 3vw, 36px);
+  border: 2px solid rgba(0, 166, 81, 0.2);
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  cursor: pointer;
+  transition: all 0.4s ease;
+  white-space: nowrap;
+  backdrop-filter: blur(10px);
+}
+
+.secondaryButton:hover {
+  background: rgba(0, 166, 81, 0.05);
+  transform: translateY(-3px);
+  border-color: #00A651;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(20px, 3vw, 30px);
+  margin-top: 48px;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 30px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 166, 81, 0.1);
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+}
+
+.statItem::after {
+  content: '';
+  position: absolute;
+  right: -15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 70%;
+  background: rgba(0, 166, 81, 0.2);
+}
+
+.statItem:last-child::after {
+  display: none;
+}
+
+.statNumber {
+  font-size: clamp(2rem, 3vw, 2.75rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, #00A651 0%, #34C759 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.02em;
+}
+
+.statLabel {
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  color: #555;
+  font-weight: 500;
+}
+
+.imageSection {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.imageWrapper {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding-top: 120%;
+}
+
+.imageBorder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  transition: all 0.5s ease;
+  transform: perspective(1000px) rotateY(-5deg);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.imageBorder:hover {
+  transform: perspective(1000px) rotateY(0deg);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+}
+
+.heroImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.5s ease;
+  filter: brightness(1.02) contrast(1.02);
+}
+
+.heroImage:hover {
+  transform: scale(1.03);
+}
+
+.decorativeElements {
+  position: absolute;
+  inset: -20px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.pieChart {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  width: clamp(60px, 8vw, 80px);
+  height: clamp(60px, 8vw, 80px);
+  background: linear-gradient(135deg, #00A651 0%, #34C759 100%);
+  border-radius: 50%;
+  opacity: 0.15;
+  animation: float 6s ease-in-out infinite;
+}
+
+.codeBlock {
+  position: absolute;
+  right: -30px;
+  top: 30%;
+  width: clamp(80px, 10vw, 120px);
+  height: clamp(60px, 8vw, 80px);
+  background: linear-gradient(135deg, #34C759 0%, #00A651 100%);
+  border-radius: 16px;
+  opacity: 0.1;
+  animation: float 8s ease-in-out infinite;
+}
+
+.triangle {
+  position: absolute;
+  bottom: 10%;
+  right: -20px;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 43px solid #00A651;
+  opacity: 0.15;
+  transform: rotate(45deg);
+  animation: float 7s ease-in-out infinite;
+}
+
+.circle {
+  position: absolute;
+  bottom: -10%;
+  left: 20%;
+  width: clamp(40px, 6vw, 60px);
+  height: clamp(40px, 6vw, 60px);
+  border: 4px solid #00A651;
+  border-radius: 50%;
+  opacity: 0.15;
+  animation: float 9s ease-in-out infinite;
+}
+
+.dots {
+  position: absolute;
+  top: 40%;
+  right: -10px;
+  width: clamp(30px, 4vw, 40px);
+  height: clamp(60px, 8vw, 80px);
+  background-image: radial-gradient(#00A651 20%, transparent 20%);
+  background-size: 10px 10px;
+  opacity: 0.2;
+}
+
+.floatingCard {
+  position: absolute;
+  bottom: 10%;
+  right: -20px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: clamp(16px, 2vw, 20px);
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 3;
+  animation: float 5s ease-in-out infinite;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.cardIcon {
+  font-size: clamp(1.5rem, 2vw, 1.75rem);
+}
+
+.cardText {
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  font-weight: 600;
+  background: linear-gradient(135deg, #00A651 0%, #34C759 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Tablet Responsive */
+@media (max-width: 1024px) {
+  .hero {
+    padding: 100px 0 80px;
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .content {
+    text-align: center;
+  }
+
+  .description {
+    margin: 0 auto 32px;
+  }
+
+  .buttonGroup {
+    justify-content: center;
+  }
+
+  .stats {
+    max-width: 600px;
+    margin: 48px auto 0;
+  }
+
+  .imageSection {
+    order: -1;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .imageWrapper {
+    padding-top: 100%;
+  }
+
+  .imageBorder {
+    transform: perspective(1000px) rotateY(0deg);
+  }
+
+  .desktopBreak {
+    display: none;
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .hero {
+    padding: 80px 0 60px;
+  }
+
+  .buttonGroup {
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto 40px;
+  }
+
+  .stats {
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .imageWrapper {
+    padding-top: 125%;
+  }
+
+  .floatingCard {
+    right: 50%;
+    transform: translateX(50%);
+    white-space: nowrap;
+    bottom: 5%;
+  }
+}
+
+/* Small Mobile Responsive */
+@media (max-width: 480px) {
+  .hero {
+    padding: 60px 0 40px;
+  }
+
+  .title {
+    font-size: 2.25rem;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .statItem::after {
+    display: none;
+  }
+
+  .imageWrapper {
+    padding-top: 140%;
+  }
+} 

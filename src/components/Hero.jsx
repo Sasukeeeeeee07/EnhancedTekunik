@@ -3,42 +3,174 @@ import styles from './Hero.module.css';
 import { motion } from 'framer-motion';
 
 const Hero = () => {
+  const textVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
+
+  const titleVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const highlightVariants = {
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: { 
+      opacity: 1, 
+      scale: 1,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3
+      }
+    }
+  };
+
+  const statVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut"
+      }
+    }
+  };
+
   return (
     <section className={styles.hero}>
       <div className={styles.container}>
-        <div className={styles.content}>
-          <h1 className={styles.title}>
-            We believe in a
-            <span className={styles.highlight}> unique approach to</span>
+        <motion.div 
+          className={styles.content}
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
+        >
+          <motion.h1 
+            className={styles.title}
+            variants={titleVariants}
+          >
+            <motion.span variants={textVariants}>We believe in a</motion.span>
+            <motion.span 
+              className={styles.highlight}
+              variants={highlightVariants}
+            > unique approach to</motion.span>
             <br className={styles.desktopBreak} />
-            <span className={styles.gradientText}>each business.</span>
-          </h1>
+            <motion.span 
+              className={styles.gradientText}
+              variants={highlightVariants}
+            >each business.</motion.span>
+          </motion.h1>
           
-          <p className={styles.description}>
+          <motion.p 
+            className={styles.description}
+            variants={textVariants}
+          >
             Transforming ideas into digital excellence with innovative solutions
             tailored to your unique business needs.
-          </p>
+          </motion.p>
 
-          <div className={styles.buttonGroup}>
-            <button className={styles.primaryButton}>GET STARTED</button>
-            <button className={styles.secondaryButton}>Discuss Your Project</button>
-          </div>
+          <motion.div 
+            className={styles.buttonGroup}
+            variants={textVariants}
+          >
+            <motion.button 
+              className={styles.primaryButton}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              GET STARTED
+            </motion.button>
+            <motion.button 
+              className={styles.secondaryButton}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Discuss Your Project
+            </motion.button>
+          </motion.div>
 
-          <div className={styles.stats}>
-            <div className={styles.statItem}>
-              <span className={styles.statNumber}>500+</span>
-              <span className={styles.statLabel}>Projects Delivered</span>
-            </div>
-            <div className={styles.statItem}>
-              <span className={styles.statNumber}>98%</span>
-              <span className={styles.statLabel}>Client Satisfaction</span>
-            </div>
-            <div className={styles.statItem}>
-              <span className={styles.statNumber}>24/7</span>
-              <span className={styles.statLabel}>Support Available</span>
-            </div>
-          </div>
-        </div>
+          <motion.div 
+            className={styles.stats}
+            variants={containerVariants}
+          >
+            <motion.div 
+              className={styles.statItem}
+              variants={statVariants}
+            >
+              <motion.span 
+                className={styles.statNumber}
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 1 }}
+              >
+                500+
+              </motion.span>
+              <motion.span 
+                className={styles.statLabel}
+                variants={textVariants}
+              >
+                Projects Delivered
+              </motion.span>
+            </motion.div>
+            <motion.div 
+              className={styles.statItem}
+              variants={statVariants}
+            >
+              <motion.span 
+                className={styles.statNumber}
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 1.2 }}
+              >
+                98%
+              </motion.span>
+              <motion.span 
+                className={styles.statLabel}
+                variants={textVariants}
+              >
+                Client Satisfaction
+              </motion.span>
+            </motion.div>
+            <motion.div 
+              className={styles.statItem}
+              variants={statVariants}
+            >
+              <motion.span 
+                className={styles.statNumber}
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 1.4 }}
+              >
+                24/7
+              </motion.span>
+              <motion.span 
+                className={styles.statLabel}
+                variants={textVariants}
+              >
+                Support Available
+              </motion.span>
+            </motion.div>
+          </motion.div>
+        </motion.div>
 
         <div className={styles.imageSection}>
           <div className={styles.decorativeElements}>

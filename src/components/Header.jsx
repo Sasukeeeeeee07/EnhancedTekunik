@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styles from './Header.module.css';
 import logo from '../assets/Logo.png';
 
 const Header = () => {
   const location = useLocation();
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const closeDropdown = () => {
+    setIsDropdownOpen(false);
+  };
 
   return (
     <header className={styles.header}>
@@ -50,10 +59,35 @@ const Header = () => {
           </ul>
         </nav>
 
-        <Link to="/contact" className={styles.requestQuote}>
-          Request Quote
-          <span className={styles.arrow}>↓</span>
-        </Link>
+        <div className={styles.quoteContainer}>
+          <button 
+            className={styles.requestQuote}
+            onClick={toggleDropdown}
+          >
+            Request Quote
+            <span className={`${styles.arrow} ${isDropdownOpen ? styles.arrowUp : ''}`}>↓</span>
+          </button>
+          {isDropdownOpen && (
+            <div className={styles.dropdown}>
+              <Link 
+                to="/quote/website" 
+                className={styles.dropdownItem}
+                onClick={closeDropdown}
+              >
+                <span className={styles.itemIcon}>🌐</span>
+                Website Development
+              </Link>
+              <Link 
+                to="/quote/mobile" 
+                className={styles.dropdownItem}
+                onClick={closeDropdown}
+              >
+                <span className={styles.itemIcon}>📱</span>
+                Mobile Development
+              </Link>
+            </div>
+          )}
+        </div>
       </div>
     </header>
   );

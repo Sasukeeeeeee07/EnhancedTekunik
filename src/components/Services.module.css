@@ -269,46 +269,22 @@
   transition: all 0.4s ease;
 }
 
-.decorativeElements {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  pointer-events: none;
-  overflow: hidden;
+.learnMore {
+  background: linear-gradient(135deg, #4f46e5, #2563eb);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 20px;
+  width: 100%;
+  transition: all 0.3s ease;
 }
 
-.bigCircle {
-  position: absolute;
-  top: -100px;
-  right: -100px;
-  width: 300px;
-  height: 300px;
-  border: 30px solid rgba(79, 70, 229, 0.05);
-  border-radius: 50%;
-}
-
-.smallDots {
-  position: absolute;
-  bottom: 50px;
-  left: 50px;
-  width: 100px;
-  height: 100px;
-  background-image: radial-gradient(circle, rgba(37, 99, 235, 0.2) 2px, transparent 2px);
-  background-size: 15px 15px;
-}
-
-.bigTriangle {
-  position: absolute;
-  bottom: -100px;
-  left: -100px;
-  width: 0;
-  height: 0;
-  border-left: 150px solid transparent;
-  border-right: 150px solid transparent;
-  border-bottom: 200px solid rgba(79, 70, 229, 0.05);
-  transform: rotate(-45deg);
+.learnMore:hover {
+  background: linear-gradient(135deg, #4338ca, #1d4ed8);
+  transform: translateY(-2px);
 }
 
 @media (max-width: 768px) {

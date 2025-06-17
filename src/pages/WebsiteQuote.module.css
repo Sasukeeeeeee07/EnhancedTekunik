@@ -1,0 +1,379 @@
+.quotePage {
+  padding: 2rem;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background Shapes Styles */
+.backgroundShapes {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.shape {
+  position: absolute;
+  opacity: 0.08;
+  will-change: transform;
+}
+
+/* Circles */
+.circle1, .circle2, .circle3, .circle4, .circle5, .circle6 {
+  border-radius: 50%;
+  background: linear-gradient(45deg, #00A651, #008c44);
+}
+
+.circle1 {
+  width: 300px;
+  height: 300px;
+  top: -50px;
+  left: -50px;
+  animation: moveCircle1 20s infinite;
+}
+
+.circle2 {
+  width: 200px;
+  height: 200px;
+  top: 40%;
+  right: -30px;
+  animation: moveCircle2 25s infinite;
+}
+
+.circle3 {
+  width: 150px;
+  height: 150px;
+  bottom: 10%;
+  left: 15%;
+  animation: moveCircle3 18s infinite;
+}
+
+.circle4 {
+  width: 100px;
+  height: 100px;
+  top: 20%;
+  left: 30%;
+  animation: moveCircle4 22s infinite;
+}
+
+.circle5 {
+  width: 250px;
+  height: 250px;
+  bottom: -50px;
+  right: 20%;
+  animation: moveCircle5 28s infinite;
+}
+
+.circle6 {
+  width: 180px;
+  height: 180px;
+  top: 60%;
+  left: 5%;
+  animation: moveCircle6 24s infinite;
+}
+
+/* Triangles */
+.triangle1, .triangle2, .triangle3, .triangle4, .triangle5 {
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.triangle1 {
+  border-width: 0 50px 86.6px 50px;
+  border-color: transparent transparent #00A651 transparent;
+  top: 20%;
+  right: 15%;
+  animation: spinTriangle1 15s linear infinite;
+}
+
+.triangle2 {
+  border-width: 0 30px 52px 30px;
+  border-color: transparent transparent #008c44 transparent;
+  top: 40%;
+  left: 10%;
+  animation: spinTriangle2 20s linear infinite;
+}
+
+.triangle3 {
+  border-width: 0 40px 69.3px 40px;
+  border-color: transparent transparent #00A651 transparent;
+  bottom: 30%;
+  right: 25%;
+  animation: spinTriangle3 18s linear infinite;
+}
+
+.triangle4 {
+  border-width: 0 35px 60.6px 35px;
+  border-color: transparent transparent #008c44 transparent;
+  top: 15%;
+  left: 35%;
+  animation: spinTriangle4 22s linear infinite;
+}
+
+.triangle5 {
+  border-width: 0 45px 77.9px 45px;
+  border-color: transparent transparent #00A651 transparent;
+  bottom: 15%;
+  left: 20%;
+  animation: spinTriangle5 25s linear infinite;
+}
+
+/* Circle Animations */
+@keyframes moveCircle1 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(50px, 30px) rotate(90deg); }
+  50% { transform: translate(30px, 50px) rotate(180deg); }
+  75% { transform: translate(-20px, 20px) rotate(270deg); }
+}
+
+@keyframes moveCircle2 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(-40px, 40px) rotate(-120deg); }
+  66% { transform: translate(30px, -30px) rotate(-240deg); }
+}
+
+@keyframes moveCircle3 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(60px, -20px) rotate(180deg); }
+}
+
+@keyframes moveCircle4 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(30px, 30px) rotate(120deg); }
+  66% { transform: translate(-20px, 40px) rotate(240deg); }
+}
+
+@keyframes moveCircle5 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(-40px, -20px) rotate(-90deg); }
+  50% { transform: translate(-20px, -40px) rotate(-180deg); }
+  75% { transform: translate(30px, -30px) rotate(-270deg); }
+}
+
+@keyframes moveCircle6 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(40px, 40px) rotate(-180deg); }
+}
+
+/* Triangle Animations */
+@keyframes spinTriangle1 {
+  from { transform: rotate(0deg) translate(20px) rotate(0deg); }
+  to { transform: rotate(360deg) translate(20px) rotate(-360deg); }
+}
+
+@keyframes spinTriangle2 {
+  from { transform: rotate(0deg) translate(15px) rotate(0deg); }
+  to { transform: rotate(-360deg) translate(15px) rotate(360deg); }
+}
+
+@keyframes spinTriangle3 {
+  from { transform: rotate(0deg) translate(25px) rotate(0deg); }
+  to { transform: rotate(360deg) translate(25px) rotate(-360deg); }
+}
+
+@keyframes spinTriangle4 {
+  from { transform: rotate(0deg) translate(18px) rotate(0deg); }
+  to { transform: rotate(-360deg) translate(18px) rotate(360deg); }
+}
+
+@keyframes spinTriangle5 {
+  from { transform: rotate(0deg) translate(22px) rotate(0deg); }
+  to { transform: rotate(360deg) translate(22px) rotate(-360deg); }
+}
+
+/* Make sure the form container is above the shapes */
+.container {
+  position: relative;
+  z-index: 2;
+  max-width: 1000px;
+  margin: 80px auto 2rem;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.header {
+  background: linear-gradient(135deg, #00A651 0%, #008c44 100%);
+  color: white;
+  padding: 2.5rem 3rem;
+  text-align: center;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  margin: 0 0 0.5rem;
+  font-weight: 600;
+}
+
+.header p {
+  font-size: 1.1rem;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.form {
+  padding: 3rem;
+}
+
+.formSection {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.formSection:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.formSection h2 {
+  color: #333;
+  font-size: 1.5rem;
+  margin: 0 0 1.5rem;
+  font-weight: 600;
+  text-align: left;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.formGroup {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #555;
+  font-weight: 500;
+  text-align: left;
+}
+
+.formGroup input[type="text"],
+.formGroup input[type="email"],
+.formGroup input[type="tel"],
+.formGroup textarea,
+.formGroup select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.formGroup input[type="text"]:focus,
+.formGroup input[type="email"]:focus,
+.formGroup input[type="tel"]:focus,
+.formGroup textarea:focus,
+.formGroup select:focus {
+  outline: none;
+  border-color: #00A651;
+}
+
+.radioGroup {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  text-align: left;
+}
+
+.radioGroup label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  margin-bottom: 0;
+  text-align: left;
+}
+
+.checkboxGroup {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+  text-align: left;
+}
+
+.checkboxGroup label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  border-radius: 6px;
+  text-align: left;
+}
+
+.checkboxGroup label:hover {
+  background-color: rgba(0, 166, 81, 0.05);
+}
+
+.formActions {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.submitButton {
+  background: #00A651;
+  color: white;
+  border: none;
+  padding: 1rem 3rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submitButton:hover {
+  background: #008c44;
+}
+
+@media (max-width: 768px) {
+  .quotePage {
+    padding: 1rem;
+  }
+
+  .container {
+    margin: 60px auto 1rem;
+  }
+
+  .header {
+    padding: 2rem;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .form {
+    padding: 1.5rem;
+  }
+
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .radioGroup {
+    gap: 1rem;
+  }
+
+  .checkboxGroup {
+    grid-template-columns: 1fr;
+  }
+} 

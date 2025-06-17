@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .App-logo {
@@ -36,3 +39,10 @@
     transform: rotate(360deg);
   }
 }
+
+.main-content {
+  flex: 1;
+  margin-top: 70px; /* Adjust this value based on your header height */
+}
+
+/* Add any global styles below */

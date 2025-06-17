@@ -1,156 +1,187 @@
 import React from 'react';
-import styles from './About.module.css';
 import { motion } from 'framer-motion';
-
-const FloatingImage = ({ src, className, duration = 20, delay = 0 }) => {
-  return (
-    <motion.img
-      src={src}
-      className={className}
-      initial={{ opacity: 0 }}
-      animate={{ 
-        opacity: [0.3, 0.8, 0.3],
-        y: [0, -20, 0],
-        x: [0, 20, 0]
-      }}
-      transition={{
-        duration: duration,
-        repeat: Infinity,
-        delay: delay,
-        ease: "linear"
-      }}
-      alt=""
-    />
-  );
-};
+import styles from './About.module.css';
 
 const About = () => {
   return (
     <div className={styles.about}>
-      <div className={styles.backgroundImages}>
-        <FloatingImage 
-          src="/images/tech-pattern-1.svg" 
-          className={styles.bgImage1}
-          duration={25}
-        />
-        <FloatingImage 
-          src="/images/tech-pattern-2.svg" 
-          className={styles.bgImage2}
-          duration={30}
-          delay={2}
-        />
-        <FloatingImage 
-          src="/images/tech-pattern-3.svg" 
-          className={styles.bgImage3}
-          duration={20}
-          delay={1}
-        />
-      </div>
-
-      <div className={styles.decorativeElements}>
-        <div className={styles.triangle1}></div>
-        <div className={styles.triangle2}></div>
-        <div className={styles.circle1}></div>
-        <div className={styles.circle2}></div>
-        <div className={styles.dots}></div>
-      </div>
-
-      <div className={styles.container}>
-        <motion.div 
-          className={styles.header}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className={styles.title}>About Us</h2>
-          <p className={styles.subtitle}>
-            Building digital excellence with passion and innovation
-          </p>
-        </motion.div>
-
-        <div className={styles.content}>
-          <motion.div 
-            className={styles.storySection}
-            initial={{ opacity: 0, y: 30 }}
+      {/* Hero Section */}
+      <div className={styles.hero}>
+        <div className={styles.heroContent}>
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
+            transition={{ duration: 0.6 }}
           >
-            <h3>Our Story</h3>
-            <p>
-              Founded in 2020, Tekunik has grown from a small tech startup to a leading digital solutions provider. 
-              Our journey is marked by continuous innovation, dedication to excellence, and a deep commitment to 
-              helping businesses thrive in the digital age.
-            </p>
-          </motion.div>
-
-          <motion.div 
-            className={styles.valuesGrid}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-          >
-            <div className={styles.valueCard}>
-              <div className={styles.valueIcon}>💡</div>
-              <h4>Innovation</h4>
-              <p>Pushing boundaries with cutting-edge solutions</p>
-            </div>
-            <div className={styles.valueCard}>
-              <div className={styles.valueIcon}>🎯</div>
-              <h4>Excellence</h4>
-              <p>Delivering outstanding quality in every project</p>
-            </div>
-            <div className={styles.valueCard}>
-              <div className={styles.valueIcon}>🤝</div>
-              <h4>Partnership</h4>
-              <p>Building lasting relationships with our clients</p>
-            </div>
-            <div className={styles.valueCard}>
-              <div className={styles.valueIcon}>⚡</div>
-              <h4>Efficiency</h4>
-              <p>Optimizing processes for better results</p>
-            </div>
-          </motion.div>
-
-          <motion.div 
-            className={styles.statsSection}
-            initial={{ opacity: 0, y: 30 }}
+            About Tekunik
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className={styles.statCard}>
-              <h3>500+</h3>
-              <p>Projects Completed</p>
-            </div>
-            <div className={styles.statCard}>
-              <h3>98%</h3>
-              <p>Client Satisfaction</p>
-            </div>
-            <div className={styles.statCard}>
-              <h3>50+</h3>
-              <p>Expert Team Members</p>
-            </div>
-            <div className={styles.statCard}>
-              <h3>24/7</h3>
-              <p>Support Available</p>
-            </div>
-          </motion.div>
-
-          <motion.div 
-            className={styles.missionSection}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1 }}
-          >
-            <h3>Our Mission</h3>
-            <p>
-              To empower businesses with innovative digital solutions that drive growth, 
-              enhance efficiency, and create lasting value. We're committed to delivering 
-              excellence through technology while maintaining the highest standards of 
-              quality and customer service.
-            </p>
-          </motion.div>
+            Transforming ideas into digital excellence with innovative solutions tailored to your
+            unique business needs.
+          </motion.p>
         </div>
       </div>
+
+      {/* Our Story Section */}
+      <section className={styles.storySection}>
+        <div className={styles.container}>
+          <div className={styles.storyContent}>
+            <motion.div 
+              className={styles.storyText}
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2>Our Story</h2>
+              <p>
+                TekUnik is a believer of embracing change! We are one of the fastest
+                growing digital marketing agencies based out of Mumbai serving globally.
+              </p>
+              <p>
+                We offer the most effective multi-channel and multi-platform Internet
+                marketing services that will help your brand, products and services reach
+                their full marketing reach and potential.
+              </p>
+            </motion.div>
+
+            <motion.div 
+              className={styles.statsContainer}
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className={styles.statsImage}>
+                <img 
+                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1200" 
+                  alt="Team collaboration" 
+                />
+                <div className={styles.experienceBadge}>
+                  <span>10+ Years</span>
+                  <span>of Excellence</span>
+                </div>
+              </div>
+
+              <div className={styles.statsGrid}>
+                <div className={styles.statCard}>
+                  <span className={styles.statNumber}>500+</span>
+                  <span className={styles.statLabel}>Projects Completed</span>
+                </div>
+                <div className={styles.statCard}>
+                  <span className={styles.statNumber}>50+</span>
+                  <span className={styles.statLabel}>Team Members</span>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Values Section */}
+      <section className={styles.valuesSection}>
+        <div className={styles.container}>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            Our Values
+          </motion.h2>
+
+          <div className={styles.valuesGrid}>
+            {[
+              {
+                icon: '💡',
+                title: 'Innovation',
+                description: 'At the core of everything we do'
+              },
+              {
+                icon: '🎯',
+                title: 'Client Success',
+                description: 'Our primary measure of achievement'
+              },
+              {
+                icon: '📚',
+                title: 'Continuous Learning',
+                description: 'Adaptation and growth mindset'
+              },
+              {
+                icon: '🌱',
+                title: 'Sustainability',
+                description: 'Ethical and sustainable practices'
+              }
+            ].map((value, index) => (
+              <motion.div
+                key={index}
+                className={styles.valueCard}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+              >
+                <span className={styles.valueIcon}>{value.icon}</span>
+                <h3>{value.title}</h3>
+                <p>{value.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Our Team Section */}
+      <section className={styles.teamSection}>
+        <div className={styles.container}>
+          <motion.div
+            className={styles.teamContent}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2>Our Team</h2>
+            <p>
+              We're a diverse team of thinkers, creators, and problem-solvers, united by our passion
+              for innovation and excellence.
+            </p>
+          </motion.div>
+
+          <div className={styles.teamGrid}>
+            <motion.div 
+              className={styles.joinTeam}
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <h3>Join Our Team</h3>
+              <p>
+                We're always looking for talented individuals who share our passion for
+                innovation and excellence. If you're interested in joining our team, we'd
+                love to hear from you.
+              </p>
+              <motion.button
+                className={styles.applyButton}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Apply Now
+              </motion.button>
+            </motion.div>
+
+            <motion.div 
+              className={styles.teamImage}
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <img 
+                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=1200" 
+                alt="Team working together" 
+              />
+            </motion.div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

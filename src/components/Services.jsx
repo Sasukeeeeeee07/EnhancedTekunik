@@ -1,54 +1,97 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import styles from './Services.module.css';
 
-const Services = () => {
-  const services = [
-    {
-      icon: '💻',
-      title: 'Web Development',
-      description: 'Custom web solutions that combine stunning design with powerful functionality.',
-      features: [
-        'Responsive website design',
-        'E-commerce development',
-        'Custom web applications',
-        'Website maintenance & support'
-      ]
-    },
-    {
-      icon: '🎯',
-      title: 'Digital Marketing',
-      description: 'Strategic digital marketing solutions to boost your online presence and drive growth.',
-      features: [
-        'SEO optimization',
-        'Social media marketing',
-        'PPC advertising',
-        'Email marketing campaigns'
-      ]
-    },
-    {
-      icon: '✍️',
-      title: 'Content Writing',
-      description: 'Compelling content that engages your audience and tells your brand story.',
-      features: [
-        'Blog & article writing',
-        'Website content',
-        'SEO copywriting',
-        'Social media content'
-      ]
-    },
-    {
-      icon: '🎨',
-      title: 'Brand Building',
-      description: 'Comprehensive brand development to establish a strong market presence.',
-      features: [
-        'Brand strategy',
-        'Visual identity design',
-        'Brand guidelines',
-        'Brand messaging'
-      ]
-    }
-  ];
+const services = [
+  {
+    id: 'web-development',
+    icon: '💻',
+    title: 'Web Development',
+    description: 'Custom web solutions that combine stunning design with powerful functionality.',
+    features: [
+      'Responsive website design',
+      'E-commerce development',
+      'Custom web applications',
+      'Website maintenance & support'
+    ]
+  },
+  {
+    id: 'digital-marketing',
+    icon: '🎯',
+    title: 'Digital Marketing',
+    description: 'Strategic digital marketing solutions to boost your online presence and drive growth.',
+    features: [
+      'SEO optimization',
+      'Social media marketing',
+      'PPC advertising',
+      'Email marketing campaigns'
+    ]
+  },
+  {
+    id: 'content-writing',
+    icon: '✍️',
+    title: 'Content Writing',
+    description: 'Compelling content that engages your audience and tells your brand story.',
+    features: [
+      'Blog & article writing',
+      'Website content',
+      'SEO copywriting',
+      'Social media content'
+    ]
+  },
+  {
+    id: 'brand-building',
+    icon: '🎨',
+    title: 'Brand Building',
+    description: 'Comprehensive brand development to establish a strong market presence.',
+    features: [
+      'Brand strategy',
+      'Visual identity design',
+      'Brand guidelines',
+      'Brand messaging'
+    ]
+  }
+];
 
+const ServiceCard = ({ service }) => {
+  return (
+    <div className={styles.serviceCard}>
+      <div className={styles.cardContent}>
+        <div className={styles.iconWrapper}>
+          <span className={styles.icon}>{service.icon}</span>
+          <div className={styles.iconBackground}></div>
+        </div>
+        <h3 className={styles.serviceTitle}>{service.title}</h3>
+        <p className={styles.serviceDescription}>{service.description}</p>
+        <ul className={styles.featureList}>
+          {service.features.map((feature, featureIndex) => (
+            <li key={featureIndex} className={styles.featureItem}>
+              <span className={styles.checkmark}>✓</span>
+              {feature}
+            </li>
+          ))}
+        </ul>
+        <Link to={`/services/${service.id}`} className={styles.learnMoreLink}>
+          <motion.button
+            className={styles.learnMore}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Learn More →
+          </motion.button>
+        </Link>
+      </div>
+      <div className={styles.cardDecoration}>
+        <div className={styles.dots}></div>
+        <div className={styles.circle}></div>
+        <div className={styles.triangle}></div>
+      </div>
+    </div>
+  );
+};
+
+const Services = () => {
   const extras = [
     {
       icon: '🖥️',
@@ -93,29 +136,10 @@ const Services = () => {
 
         <div className={styles.servicesGrid}>
           {services.map((service, index) => (
-            <div key={index} className={styles.serviceCard}>
-              <div className={styles.cardContent}>
-                <div className={styles.iconWrapper}>
-                  <span className={styles.icon}>{service.icon}</span>
-                  <div className={styles.iconBackground}></div>
-                </div>
-                <h3 className={styles.serviceTitle}>{service.title}</h3>
-                <p className={styles.serviceDescription}>{service.description}</p>
-                <ul className={styles.featureList}>
-                  {service.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className={styles.featureItem}>
-                      <span className={styles.checkmark}>✓</span>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className={styles.cardDecoration}>
-                <div className={styles.dots}></div>
-                <div className={styles.circle}></div>
-                <div className={styles.triangle}></div>
-              </div>
-            </div>
+            <ServiceCard 
+              key={index} 
+              service={service}
+            />
           ))}
         </div>
 

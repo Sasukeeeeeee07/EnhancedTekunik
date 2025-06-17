@@ -1,0 +1,273 @@
+.servicePage {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.decorativeElements {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.circle1, .circle2 {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+}
+
+.circle1 {
+  width: 400px;
+  height: 400px;
+  background: rgba(67, 97, 238, 0.15);
+  top: -100px;
+  left: -100px;
+}
+
+.circle2 {
+  width: 500px;
+  height: 500px;
+  background: rgba(0, 166, 81, 0.15);
+  bottom: -150px;
+  right: -150px;
+}
+
+.triangle1, .triangle2 {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.triangle1 {
+  border-left: 100px solid transparent;
+  border-right: 100px solid transparent;
+  border-bottom: 173.2px solid rgba(67, 97, 238, 0.1);
+  top: 20%;
+  right: 10%;
+}
+
+.triangle2 {
+  border-left: 80px solid transparent;
+  border-right: 80px solid transparent;
+  border-bottom: 138.6px solid rgba(0, 166, 81, 0.1);
+  bottom: 15%;
+  left: 5%;
+}
+
+.hero {
+  position: relative;
+  height: 60vh;
+  min-height: 500px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  margin-top: 60px;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.8));
+}
+
+.heroContent {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.content section {
+  margin-bottom: 80px;
+}
+
+.content h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #1a1a1a;
+}
+
+.overview p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #4a4a4a;
+}
+
+.expertiseGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.expertiseItem {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.checkmark {
+  color: #00A651;
+  font-size: 1.2rem;
+}
+
+.techGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 30px;
+}
+
+.techItem {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.techItem:hover {
+  transform: translateY(-5px);
+}
+
+.techIcon {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.techName {
+  font-size: 1.1rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.processGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.processStep {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.stepIcon {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.processStep h3 {
+  font-size: 1.3rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.processStep p {
+  color: #666;
+  line-height: 1.6;
+}
+
+.cta {
+  background: linear-gradient(135deg, rgba(67, 97, 238, 0.05) 0%, rgba(0, 166, 81, 0.05) 100%);
+  padding: 60px 20px;
+  border-radius: 30px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.ctaContent h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.ctaContent p {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 30px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ctaButton {
+  padding: 15px 40px;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+  }
+
+  .content h2 {
+    font-size: 2rem;
+  }
+
+  .expertiseGrid,
+  .techGrid,
+  .processGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .circle1,
+  .circle2 {
+    width: 300px;
+    height: 300px;
+  }
+
+  .triangle1,
+  .triangle2 {
+    display: none;
+  }
+} 

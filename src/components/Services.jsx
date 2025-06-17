@@ -73,52 +73,58 @@ const Services = () => {
   ];
 
   return (
-    <>
-      <section className={styles.services}>
-        <div className={styles.container}>
-          <div className={styles.header}>
-            <h2 className={styles.title}>Our Services</h2>
-            <p className={styles.subtitle}>
-              We offer comprehensive digital solutions to help your business thrive in the modern
-              digital landscape.
-            </p>
-          </div>
+    <section className={styles.services}>
+      <div className={styles.decorativeElements}>
+        <div className={styles.triangle1}></div>
+        <div className={styles.triangle2}></div>
+        <div className={styles.circle1}></div>
+        <div className={styles.circle2}></div>
+        <div className={styles.dots}></div>
+      </div>
 
-          <div className={styles.servicesGrid}>
-            {services.map((service, index) => (
-              <div key={index} className={styles.serviceCard}>
-                <div className={styles.cardContent}>
-                  <div className={styles.iconWrapper}>
-                    <span className={styles.icon}>{service.icon}</span>
-                    <div className={styles.iconBackground}></div>
-                  </div>
-                  <h3 className={styles.serviceTitle}>{service.title}</h3>
-                  <p className={styles.serviceDescription}>{service.description}</p>
-                  <ul className={styles.featureList}>
-                    {service.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className={styles.featureItem}>
-                        <span className={styles.checkmark}>✓</span>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className={styles.cardDecoration}>
-                  <div className={styles.dots}></div>
-                  <div className={styles.circle}></div>
-                  <div className={styles.triangle}></div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className={styles.decorativeElements}>
-            <div className={styles.bigCircle}></div>
-            <div className={styles.smallDots}></div>
-            <div className={styles.bigTriangle}></div>
-          </div>
+      <div className={styles.container}>
+        <div className={styles.header}>
+          <h2 className={styles.title}>Our Services</h2>
+          <p className={styles.subtitle}>
+            We offer comprehensive digital solutions to help your business thrive in the modern
+            digital landscape.
+          </p>
         </div>
-      </section>
+
+        <div className={styles.servicesGrid}>
+          {services.map((service, index) => (
+            <div key={index} className={styles.serviceCard}>
+              <div className={styles.cardContent}>
+                <div className={styles.iconWrapper}>
+                  <span className={styles.icon}>{service.icon}</span>
+                  <div className={styles.iconBackground}></div>
+                </div>
+                <h3 className={styles.serviceTitle}>{service.title}</h3>
+                <p className={styles.serviceDescription}>{service.description}</p>
+                <ul className={styles.featureList}>
+                  {service.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className={styles.featureItem}>
+                      <span className={styles.checkmark}>✓</span>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className={styles.cardDecoration}>
+                <div className={styles.dots}></div>
+                <div className={styles.circle}></div>
+                <div className={styles.triangle}></div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className={styles.decorativeElements}>
+          <div className={styles.bigCircle}></div>
+          <div className={styles.smallDots}></div>
+          <div className={styles.bigTriangle}></div>
+        </div>
+      </div>
 
       <section className={styles.extras}>
         <div className={styles.container}>
@@ -144,7 +150,7 @@ const Services = () => {
           </div>
         </div>
       </section>
-    </>
+    </section>
   );
 };
 

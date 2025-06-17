@@ -51,6 +51,14 @@ const Testimonials = () => {
 
   return (
     <section className={styles.testimonials}>
+      <div className={styles.decorativeElements}>
+        <div className={styles.triangle1}></div>
+        <div className={styles.triangle2}></div>
+        <div className={styles.circle1}></div>
+        <div className={styles.circle2}></div>
+        <div className={styles.dots}></div>
+      </div>
+
       <div className={styles.container}>
         <div className={styles.header}>
           <h2 className={styles.title}>

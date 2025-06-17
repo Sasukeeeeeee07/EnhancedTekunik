@@ -47,6 +47,14 @@ const WhyChooseUs = () => {
 
   return (
     <section className={styles.whyChooseUs}>
+      <div className={styles.decorativeElements}>
+        <div className={styles.triangle1}></div>
+        <div className={styles.triangle2}></div>
+        <div className={styles.circle1}></div>
+        <div className={styles.circle2}></div>
+        <div className={styles.dots}></div>
+      </div>
+
       <div className={styles.container}>
         <div className={styles.content}>
           <div className={styles.textContent}>

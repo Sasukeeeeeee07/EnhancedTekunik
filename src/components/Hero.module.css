@@ -486,63 +486,70 @@
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .hero {
-    padding: 80px 0 60px;
+    padding: 100px 0 40px;
+    min-height: auto;
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .content {
+    order: 1;
+    text-align: center;
   }
 
   .buttonGroup {
     flex-direction: column;
-    width: 100%;
-    max-width: 300px;
-    margin: 0 auto 40px;
+    align-items: stretch;
+    margin-bottom: 32px;
   }
 
   .stats {
+    grid-template-columns: repeat(2, 1fr);
     padding: 20px;
-    gap: 20px;
+  }
+
+  .imageSection {
+    order: 2;
+    margin-top: 20px;
   }
 
   .imageWrapper {
-    padding-top: 125%;
+    padding-top: 75%;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .imageBorder {
+    transform: none;
+    border-radius: 20px;
+  }
+
+  .imageBorder:hover {
+    transform: none;
   }
 
   .floatingCard {
-    padding: 10px 16px;
-    right: 0;
-    bottom: 20px;
+    display: none;
   }
 
-  .floatingCard2 {
-    left: 0;
-    top: 10%;
-  }
-
-  .floatingCard3 {
-    right: 0;
-    top: 50%;
-  }
-
+  .floatingCard2,
+  .floatingCard3,
   .floatingCard4 {
-    left: 0;
-    bottom: 15%;
-  }
-
-  .cardIcon {
-    font-size: 18px;
-  }
-
-  .cardText {
-    font-size: 11px;
+    display: none;
   }
 }
 
 /* Small Mobile Responsive */
 @media (max-width: 480px) {
   .hero {
-    padding: 60px 0 40px;
+    padding: 80px 0 40px;
   }
 
   .title {
-    font-size: 2.25rem;
+    font-size: 2rem;
   }
 
   .description {
@@ -551,7 +558,7 @@
 
   .stats {
     grid-template-columns: 1fr;
-    text-align: center;
+    gap: 24px;
   }
 
   .statItem::after {
@@ -559,18 +566,6 @@
   }
 
   .imageWrapper {
-    padding-top: 140%;
-  }
-
-  .floatingCard2,
-  .floatingCard3,
-  .floatingCard4 {
-    display: none;
-  }
-
-  .floatingCard {
-    right: 50%;
-    transform: translateX(50%);
-    bottom: 10px;
+    padding-top: 100%;
   }
 } 

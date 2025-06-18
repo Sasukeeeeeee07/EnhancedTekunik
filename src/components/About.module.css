@@ -6,32 +6,68 @@
 /* Hero Section */
 .hero {
   position: relative;
-  height: 400px;
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+  height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
               url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200');
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   padding: 0 20px;
+  overflow: hidden;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 166, 81, 0.9),
+    rgba(0, 0, 0, 0.8)
+  );
+  mix-blend-mode: multiply;
 }
 
 .heroContent {
   max-width: 800px;
+  position: relative;
+  z-index: 1;
 }
 
 .hero h1 {
   color: white;
-  font-size: 3.5rem;
-  margin-bottom: 1rem;
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+  font-weight: 800;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .hero p {
   color: rgba(255, 255, 255, 0.9);
-  font-size: 1.2rem;
+  font-size: clamp(1.1rem, 3vw, 1.4rem);
   line-height: 1.6;
+  margin-bottom: 2rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.scrollIndicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  text-align: center;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.scrollArrow {
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
 }
 
 /* Container */
@@ -43,8 +79,21 @@
 
 /* Story Section */
 .storySection {
-  padding: 80px 0;
+  padding: 100px 0;
   background: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.storySection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 166, 81, 0.05) 0%, rgba(52, 199, 89, 0.05) 100%);
+  z-index: 0;
 }
 
 .storyContent {
@@ -52,157 +101,192 @@
   grid-template-columns: 1fr 1fr;
   gap: 60px;
   align-items: center;
+  position: relative;
+  z-index: 1;
 }
 
 .storyText h2 {
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 5vw, 3rem);
   color: #333;
   margin-bottom: 1.5rem;
+  line-height: 1.2;
+  font-weight: 800;
 }
 
 .storyText p {
   color: #666;
   font-size: 1.1rem;
   line-height: 1.8;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
-.statsContainer {
-  position: relative;
-}
-
-.statsImage {
-  position: relative;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-}
-
-.statsImage img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.experienceBadge {
-  position: absolute;
-  bottom: -20px;
-  right: -20px;
-  background: #3B4EF8;
+.learnMoreButton {
+  background: linear-gradient(135deg, #00A651, #34C759);
   color: white;
-  padding: 15px 25px;
-  border-radius: 15px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-shadow: 0 10px 20px rgba(59, 78, 248, 0.2);
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(0, 166, 81, 0.2);
 }
 
-.experienceBadge span:first-child {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.experienceBadge span:last-child {
-  font-size: 0.9rem;
-  opacity: 0.9;
+.learnMoreButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px rgba(0, 166, 81, 0.3);
 }
 
 .statsGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
-  margin-top: 40px;
 }
 
 .statCard {
   background: white;
-  padding: 20px;
-  border-radius: 15px;
+  padding: 2rem;
+  border-radius: 20px;
   text-align: center;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  border: 1px solid #eee;
+  border: 1px solid rgba(0, 166, 81, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.statCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #00A651, #34C759);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.statCard:hover::before {
+  transform: scaleX(1);
 }
 
 .statNumber {
   display: block;
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #00A651;
-  margin-bottom: 5px;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, #00A651, #34C759);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
 }
 
 .statLabel {
   color: #666;
   font-size: 1rem;
+  font-weight: 500;
 }
 
 /* Values Section */
 .valuesSection {
-  padding: 80px 0;
+  padding: 100px 0;
   background: #f8f9fa;
+  position: relative;
+  overflow: hidden;
+}
+
+.valuesSection::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(0, 166, 81, 0.05) 0%, rgba(52, 199, 89, 0) 70%);
+  z-index: 0;
 }
 
 .valuesSection h2 {
   text-align: center;
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 5vw, 3rem);
   color: #333;
-  margin-bottom: 50px;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 1;
 }
 
 .valuesGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 30px;
+  position: relative;
+  z-index: 1;
 }
 
 .valueCard {
   background: white;
-  padding: 30px;
-  border-radius: 15px;
+  padding: 2rem;
+  border-radius: 20px;
   text-align: center;
-  transition: transform 0.3s ease;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.valueCard:hover {
-  transform: translateY(-10px);
+.valueCardBackground {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  z-index: -1;
 }
 
 .valueIcon {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
   display: inline-block;
+  position: relative;
+  z-index: 1;
 }
 
 .valueCard h3 {
   color: #333;
-  font-size: 1.2rem;
-  margin-bottom: 10px;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
 }
 
 .valueCard p {
   color: #666;
-  font-size: 0.9rem;
+  font-size: 1rem;
   line-height: 1.6;
+  position: relative;
+  z-index: 1;
 }
 
 /* Team Section */
 .teamSection {
-  padding: 80px 0;
+  padding: 100px 0;
   background: white;
+  position: relative;
+  overflow: hidden;
 }
 
 .teamContent {
   text-align: center;
   max-width: 700px;
-  margin: 0 auto 60px;
+  margin: 0 auto 4rem;
 }
 
 .teamContent h2 {
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 5vw, 3rem);
   color: #333;
-  margin-bottom: 20px;
+  margin-bottom: 1.5rem;
 }
 
 .teamContent p {
@@ -219,21 +303,24 @@
 }
 
 .joinTeam {
-  background: linear-gradient(135deg, #00A651, #00C853);
-  padding: 40px;
-  border-radius: 20px;
+  background: linear-gradient(135deg, #00A651, #34C759);
+  padding: 3rem;
+  border-radius: 30px;
   color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
-.joinTeam h3 {
-  font-size: 1.8rem;
-  margin-bottom: 20px;
+.joinContent h3 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
 }
 
-.joinTeam p {
+.joinContent p {
   font-size: 1.1rem;
   line-height: 1.8;
-  margin-bottom: 30px;
+  margin-bottom: 2rem;
   opacity: 0.9;
 }
 
@@ -241,22 +328,45 @@
   background: white;
   color: #00A651;
   border: none;
-  padding: 15px 30px;
+  padding: 1rem 2rem;
   border-radius: 30px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-}
-
-.applyButton:hover {
-  background: rgba(255, 255, 255, 0.9);
-  transform: translateY(-2px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
+.applyButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.benefitsList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.benefit {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.benefit span {
+  font-size: 1.5rem;
+}
+
+.benefit p {
+  font-size: 1rem;
+  margin: 0;
+  opacity: 0.9;
+}
+
 .teamImage {
-  border-radius: 20px;
+  position: relative;
+  border-radius: 30px;
   overflow: hidden;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
@@ -265,9 +375,28 @@
   width: 100%;
   height: auto;
   display: block;
+  transition: transform 0.5s ease;
 }
 
-/* Responsive Design */
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 166, 81, 0.9), rgba(52, 199, 89, 0.9));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.imageOverlay p {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 2rem;
+}
+
 @media (max-width: 1024px) {
   .valuesGrid {
     grid-template-columns: repeat(2, 1fr);
@@ -275,49 +404,448 @@
 }
 
 @media (max-width: 768px) {
-  .hero h1 {
-    font-size: 2.5rem;
+  .hero {
+    height: 80vh;
+    background-attachment: scroll;
   }
 
-  .storyContent,
-  .teamGrid {
+  .storyContent {
     grid-template-columns: 1fr;
     gap: 40px;
   }
 
-  .statsContainer {
-    order: -1;
-  }
-
-  .experienceBadge {
-    bottom: 20px;
-    right: 20px;
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .valuesGrid {
     grid-template-columns: 1fr;
-    gap: 20px;
   }
 
-  .valueCard {
-    padding: 20px;
+  .teamGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .joinTeam {
+    padding: 2rem;
+  }
+
+  .benefitsList {
+    grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 480px) {
   .hero h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 
   .hero p {
     font-size: 1rem;
   }
 
-  .statNumber {
-    font-size: 2rem;
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .statCard {
+    padding: 1.5rem;
   }
 
   .joinTeam {
-    padding: 30px 20px;
+    padding: 1.5rem;
+  }
+
+  .joinContent h3 {
+    font-size: 1.5rem;
+  }
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.modal h2 {
+  margin-bottom: 24px;
+  color: var(--primary-color);
+  font-size: 24px;
+  text-align: center;
+}
+
+.closeButton {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+  padding: 5px 10px;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+.closeButton:hover {
+  background-color: #f0f0f0;
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #333;
+}
+
+.formGroup input,
+.formGroup select,
+.formGroup textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.formGroup input:focus,
+.formGroup select:focus,
+.formGroup textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.formGroup input[type="file"] {
+  padding: 8px;
+  border: 2px dashed #ddd;
+  background-color: #f8f8f8;
+  cursor: pointer;
+}
+
+.formGroup textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.submitButton {
+  width: 100%;
+  padding: 12px;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 48px;
+}
+
+/* .submitButton:hover:not(:disabled) {
+  background: var(--primary-dark);
+} */
+
+.submitButton:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+.submitting {
+  position: relative;
+  cursor: not-allowed;
+}
+
+.loadingSpinner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.loadingSpinner::before {
+  content: '';
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ffffff;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-right: 8px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.successMessage {
+  text-align: center;
+  padding: 20px;
+}
+
+.successMessage h3 {
+  color: #2ecc71;
+  margin: 16px 0;
+}
+
+.successMessage p {
+  color: #666;
+  margin-bottom: 0;
+}
+
+.errorMessage {
+  background-color: #fff2f2;
+  color: #ff4444;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.formGroup input:disabled,
+.formGroup select:disabled,
+.formGroup textarea:disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
+.successMessage div {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 768px) {
+  .modal {
+    padding: 20px;
+    margin: 10px;
+  }
+
+  .formGroup label {
+    font-size: 14px;
+  }
+
+  .formGroup input,
+  .formGroup select,
+  .formGroup textarea {
+    font-size: 14px;
+  }
+}
+
+.applicationFormContainer {
+  margin-top: 40px;
+  width: 100%;
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.applicationForm {
+  width: 100%;
+  max-width: 100%;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.formRow .formGroup {
+  margin-bottom: 0;
+}
+
+.formGroup input,
+.formGroup select,
+.formGroup textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s;
+  background-color: white;
+}
+
+.formGroup input:focus,
+.formGroup select:focus,
+.formGroup textarea:focus {
+  outline: none;
+  border-color: black;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.formGroup input[type="file"] {
+  padding: 10px;
+  border: 2px dashed #ddd;
+  background-color: white;
+  cursor: pointer;
+}
+
+.formGroup input[type="file"]:hover {
+  border-color: black;
+}
+
+.formGroup textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.submitButton {
+  width: 100%;
+  padding: 14px;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 48px;
+  margin-top: 20px;
+}
+
+.submitButton:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+.submitting {
+  position: relative;
+  cursor: not-allowed;
+}
+
+.loadingSpinner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.loadingSpinner::before {
+  content: '';
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ffffff;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-right: 8px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.successMessage {
+  text-align: center;
+  padding: 40px 20px;
+  background: #f8f9fa;
+  border-radius: 12px;
+}
+
+.successMessage h3 {
+  color: #2ecc71;
+  margin: 16px 0;
+  font-size: 24px;
+}
+
+.successMessage p {
+  color: #666;
+  margin-bottom: 0;
+  font-size: 16px;
+}
+
+.errorMessage {
+  background-color: #fff2f2;
+  color: #ff4444;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.formGroup input:disabled,
+.formGroup select:disabled,
+.formGroup textarea:disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
+.successMessage div {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 768px) {
+  .applicationFormContainer {
+    padding: 20px;
+    margin-top: 30px;
+  }
+
+  .formRow {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .formGroup input,
+  .formGroup select,
+  .formGroup textarea {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .submitButton {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .successMessage {
+    padding: 30px 15px;
+  }
+
+  .successMessage h3 {
+    font-size: 20px;
+  }
+
+  .successMessage p {
+    font-size: 14px;
   }
 } 

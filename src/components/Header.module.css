@@ -22,6 +22,21 @@
   width: auto;
 }
 
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.menuContainer {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
 .nav ul {
   display: flex;
   list-style: none;
@@ -116,13 +131,139 @@
   font-size: 1.25rem;
 }
 
+.mobileMenuButton {
+  display: none;
+  background: none;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.mobileMenuButton span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: #333;
+  margin: 5px 0;
+  transition: 0.3s;
+}
+
+.mobileMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: white;
+  z-index: 2000;
+  padding: 1.5rem;
+}
+
+.mobileMenuHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.mobileLogo img {
+  height: 40px;
+  width: auto;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #333;
+  cursor: pointer;
+  padding: 0.5rem;
+  line-height: 1;
+}
+
+.mobileNav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mobileNav li {
+  margin-bottom: 1.5rem;
+}
+
+.mobileNav a {
+  text-decoration: none;
+  color: #333;
+  font-size: 1.125rem;
+  font-weight: 500;
+  display: block;
+}
+
+.mobileQuoteItem button {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #333;
+  font-size: 1.125rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+}
+
+.mobileDropdown {
+  margin-top: 1rem;
+  padding-left: 1rem;
+}
+
+.mobileDropdown a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+  color: #666;
+  font-size: 1rem;
+}
+
 @media (max-width: 768px) {
-  .nav {
-    display: none;
+  .hamburger {
+    display: block;
   }
-  
+
+  .menuContainer {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+  }
+
+  .menuContainer.open {
+    display: block;
+  }
+
+  .nav ul {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .nav a {
+    display: block;
+    padding: 0.5rem 0;
+  }
+
+  .quoteContainer {
+    margin-top: 1rem;
+  }
+
   .requestQuote {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
+    width: 100%;
+    justify-content: center;
   }
 } 

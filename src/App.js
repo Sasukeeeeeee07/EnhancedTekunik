@@ -13,10 +13,13 @@ import Footer from './components/Footer.jsx';
 import Home from './pages/Home';
 import WebsiteQuote from './pages/WebsiteQuote';
 import MobileQuote from './pages/MobileQuote';
+import ScrollToTop from './components/ScrollToTop';
+import ScrollToTopButton from './components/ScrollToTopButton';
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="App">
         <Header />
         <main className="main-content">
@@ -31,6 +34,7 @@ function App() {
           </Routes>
         </main>
         <Footer />
+        <ScrollToTopButton />
       </div>
     </Router>
   );
